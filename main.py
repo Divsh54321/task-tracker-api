@@ -70,4 +70,4 @@ def delete_task(task_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Task not found")
     db.delete(task)
     db.commit()
-    return {"message": f"Task {task_id} deleted"}
+    return {"message": f"Task {task_id} deleted successfully"}
