@@ -21,7 +21,11 @@ def get_db():
 
 @app.get("/health")
 def health_check():
-    return {"status": "ok"}
+    return {
+        "status": "ok",
+        "version": "1.1",
+        "checked_at": datetime.now(timezone.utc).isoformat()
+    }
 
 @app.post("/tasks", response_model=TaskOut)
 def create_task(task: TaskCreate, db: Session = Depends(get_db)):
